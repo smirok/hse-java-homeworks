@@ -1,0 +1,66 @@
+#!/bin/bash
+
+echo -e "\033[32m --TEST EMPTY MERGE--"
+
+echo -e "\033[36m init"
+
+./hsegit $1 init
+
+echo -e '\033[36m create file1.txt with content "aaa"'
+
+filename="$1/file1.txt"
+
+touch $filename
+echo "aaa" > $filename
+
+echo -e "\033[36m add file1.txt"
+
+./hsegit $1 add file1.txt
+
+echo -e '\033[36m commit "file1.txt"'
+
+./hsegit $1 commit file1.txt
+
+echo -e '\033[36m create file2.txt with content "bbb"'
+
+filename2="$1/file2.txt"
+
+touch $filename2
+echo "bbb" > $filename2
+
+echo -e "\033[36m add file2.txt"
+
+./hsegit $1 add file2.txt
+
+echo -e '\033[36m commit "file2.txt"'
+
+./hsegit $1 commit file2.txt
+
+echo -e '\033[36m create branch "develop"'
+
+./hsegit $1 branch-create develop
+
+echo -e '\033[36m create file3.txt with content "ccc"'
+
+filename3="$1/file3.txt"
+
+touch $filename3
+echo "ccc" > $filename3
+
+echo -e "\033[36m add file3.txt"
+
+./hsegit $1 add file3.txt
+
+echo -e '\033[36m commit "file3.txt"'
+
+./hsegit $1 commit file3.txt
+
+echo -e "\033[36m log"
+
+./hsegit $1 log
+
+echo -e "\033[36m merge master"
+
+./hsegit $1 merge master
+
+rm -rf $1

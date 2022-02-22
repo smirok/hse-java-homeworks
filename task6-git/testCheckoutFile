@@ -1,0 +1,68 @@
+#!/bin/bash
+
+echo -e "\033[32m --TEST CHECKOUT FILE--"
+
+echo -e "\033[36m init"
+
+./hsegit $1 init
+
+echo -e '\033[36m create file.txt with content "aaa"'
+
+filename="$1/file.txt"
+
+touch $filename
+echo "aaa" > $filename
+
+echo -e "\033[36m add file.txt"
+
+./hsegit $1 add "file.txt"
+
+echo -e '\033[36m commit "AddFile.txt"'
+
+./hsegit $1 commit "AddFile.txt"
+
+echo -e '\033[36m delete file.txt'
+
+rm $filename
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m checkout -- file.txt"
+
+./hsegit $1 checkout -- "file.txt"
+
+echo -e "\033[36m $filename content \033[33m"
+
+cat $filename
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e '\033[36m create file.txt with content "bbb"'
+
+echo "bbb" > $filename
+
+echo -e "\033[36m $filename content \033[33m"
+
+cat $filename
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m checkout -- file.txt"
+
+./hsegit $1 checkout -- "file.txt"
+
+echo -e "\033[36m $filename content \033[33m"
+
+cat $filename
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+rm -rf $1

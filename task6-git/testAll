@@ -1,0 +1,14 @@
+#!/bin/bash
+
+./testAdd $1
+./testMultipleCommits $1
+./testCheckoutFile $1
+./testReset $1
+./testResetWithUntracked $1
+./testCheckout $1
+./testVerifyCheckout $1
+./testBranches $1
+./testBranchRemove $1
+./testEmptyMerge $1
+./testFastForwardMerge $1
+./testRecursiveMerge $1

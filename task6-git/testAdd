@@ -1,0 +1,40 @@
+#!/bin/bash
+
+echo -e "\033[32m --TEST ADD--"
+
+echo -e "\033[36m init"
+
+./hsegit $1 init
+
+echo -e '\033[36m create file.txt with content "aaa"'
+
+filename="$1/file.txt"
+
+touch $filename
+echo "aaa" > $filename
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m add file.txt"
+
+./hsegit $1 add "file.txt"
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e '\033[36m commit "First commit"'
+
+./hsegit $1 commit "Firstcommit"
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m log"
+
+./hsegit $1 log
+
+rm -rf $1

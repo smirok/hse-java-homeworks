@@ -1,0 +1,62 @@
+#!/bin/bash
+
+echo -e "\033[32m --TEST MULTIPLE COMMITS--"
+
+echo -e "\033[36m init"
+
+./hsegit $1 init
+
+filename1="$1/file1.txt"
+filename2="$1/file2.txt"
+
+echo "aaa" > $filename1
+echo "bbb" > $filename2
+
+echo -e '\033[36m create file1.txt with content "aaa"'
+echo -e '\033[36m create file2.txt with content "bbb"'
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m add file1.txt"
+
+./hsegit $1 add "file1.txt"
+
+echo -e "\033[36m add file2.txt"
+
+./hsegit $1 add "file2.txt"
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m rm file2.txt"
+
+./hsegit $1 "rm" "file2.txt"
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m commit Add file1.txt"
+
+./hsegit $1 commit "Addfile1.txt"
+
+echo -e "\033[36m add file2.txt"
+
+./hsegit $1 add "file2.txt"
+
+echo -e "\033[36m commit Add file2.txt"
+
+./hsegit $1 commit "Addfile2.txt"
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+echo -e "\033[36m log"
+
+./hsegit $1 log
+
+rm -rf $1

@@ -1,0 +1,64 @@
+#!/bin/bash
+
+echo -e "\033[32m --TEST RESET WITH UNTRACKED--"
+
+echo -e "\033[36m init"
+
+./hsegit $1 init
+
+echo -e '\033[36m create file.txt with content "aaa"'
+
+filename="$1/file.txt"
+
+touch $filename
+echo "aaa" > $filename
+
+echo -e "\033[36m add file.txt"
+
+./hsegit $1 add "file.txt"
+
+echo -e '\033[36m commit "FirstCommit"'
+
+./hsegit $1 commit "FirstCommit"
+
+echo -e '\033[36m create file.txt with content "bbb"'
+
+echo "bbb" > $filename
+
+echo -e "\033[36m add file.txt"
+
+./hsegit $1 add "file.txt"
+
+echo -e '\033[36m commit "SecondCommit"'
+
+./hsegit $1 commit "SecondCommit"
+
+echo -e "\033[36m log"
+
+./hsegit $1 log
+
+echo -e '\033[36m create newfile.txt with content "somedata"'
+
+filename2="$1/newfile.txt"
+
+touch $filename2
+
+echo "somedata" > $filename2
+
+echo -e "\033[36m reset HEAD~1"
+
+./hsegit $1 reset HEAD~1
+
+echo -e "\033[36m $filename content \033[33m"
+
+cat $filename
+
+echo -e "\033[36m log"
+
+./hsegit $1 log
+
+echo -e "\033[36m status"
+
+./hsegit $1 status
+
+rm -rf $1
